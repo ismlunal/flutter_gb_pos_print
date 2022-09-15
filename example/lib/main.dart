@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -40,6 +43,9 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               onPressed: () async {
+                GBPosPrint.qrArea("ismailunal.net");
+
+                /*
                 GBPosPrint.startPrint(
                     "GAZIBEL HIZ MUS INS SAN TIC A.S.\nGAZIBEL MARKET (GAZIMAR)");
                 GBPosPrint.spacePrint(3);
@@ -47,7 +53,6 @@ class _MyAppState extends State<MyApp> {
                 GBPosPrint.spacePrint(2);
                 GBPosPrint.startPrint("10.05.2021 18:24:24");
                 GBPosPrint.spacePrint(5);
-
                 GBPosPrint.startPrint("-------- SATIS ISLEMI --------");
                 GBPosPrint.spacePrint(3);
                 GBPosPrint.startPrint("ISLEM NO: 00001");
@@ -64,6 +69,7 @@ class _MyAppState extends State<MyApp> {
                 GBPosPrint.endLogo();
 
                 GBPosPrint.spacePrint(18);
+                */
               },
               color: Colors.green,
             ),

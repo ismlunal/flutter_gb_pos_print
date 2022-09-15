@@ -36,6 +36,14 @@ public class PrintManagerCore
                         printerManager.paperFeed(20);
                     }
                     break;
+                case 3:
+                    String qrText = (String)content; 
+                    printerManager.drawBarcode(qrText, 140, 10, /**/58, 6, 50, 0);
+                    break;
+                case 4:
+                    String dMatrixText = (String)content; 
+                    printerManager.drawBarcode(dMatrixText, 140, 10, /**/71, 8, 50, 0);
+                    break;
             }
 
             ret = printerManager.printPage(0);  //Execution printing
