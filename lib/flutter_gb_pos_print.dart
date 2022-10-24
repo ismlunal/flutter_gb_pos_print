@@ -24,4 +24,16 @@ class GBPosPrint {
   static Future<void> dataMatrixArea(String content) async {
     await _channel.invokeMethod('dataMatrixArea', {"content": content});
   }
+
+  static Future<void> fullContent({
+    required String content,
+    String? qrArea,
+    bool footerLogo = false,
+  }) async {
+    await _channel.invokeMethod('fullContent', {
+      "content": content,
+      "qrArea": qrArea,
+      "footerLogo": footerLogo,
+    });
+  }
 }

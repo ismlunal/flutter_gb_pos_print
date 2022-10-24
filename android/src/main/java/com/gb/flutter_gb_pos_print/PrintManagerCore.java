@@ -15,13 +15,10 @@ public class PrintManagerCore
             printerManager.setupPage(384, -1);   //Set paper size
             switch (type) {
                 case 0:
-                    int fontSize = 24;
-                    int fontStyle = 0x0000;
-                    String fontName = "simsun";
                     int height = 0;
                     String[] texts = ((String) content).split("\n");   //Split print content into multiple lines
                     for (String text : texts) {
-                        height += printerManager.drawText(text, 0, height, fontName, fontSize, false, false, 0);   //Printed text
+                        height += printerManager.drawText(text, 0, height, "simsun", 24, false, false, 0);   //Printed text
                     }
                     height = 0;
                     break;
@@ -49,10 +46,47 @@ public class PrintManagerCore
             ret = printerManager.printPage(0);  //Execution printing
             //printerManager.paperFeed(15);  //paper feed
         }
+    }
 
-        /*for (int i = 0; i < 15; i++) {
-            printerManager.paperFeed(20);
-        }*/
+    public void doPrintFull(String content, String qrArea, Bitmap footerBitmap) {
+        PrinterManager printerManager = this.getPrinterManager();
+
+        int ret = printerManager.getStatus();  
+        if (ret == 0) {
+            printerManager.setupPage(384, -1);  
+            int heightC = 0;
+
+            String[] textsc = content.split("\n");
+            for (String text : textsc) {
+                heightC += printerManager.drawText(text, 0, heightC, "simsun", 24, false, false, 0);
+            }
+
+            if(qrArea != null)
+            {
+                heightC += printerManager.drawBarcode(qrArea, 110, heightC, /**/58, 7, 55, 0);
+                if(footerBitmap == null)
+                {
+                    heightC += printerManager.drawText("\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r", 0, heightC, "simsun", 24, false, false, 0);
+                } else {
+                    heightC += 180;
+                }
+            }
+
+            if(footerBitmap != null)
+            {
+                heightC += printerManager.drawBitmap(footerBitmap, 40, heightC);
+                heightC += printerManager.drawText("\n\r\n\r\n\r\n\r\n\r\n\r\n\r", 0, heightC, "simsun", 24, false, false, 0);
+            }
+
+            if(qrArea == null && footerBitmap == null)
+            {
+                heightC += printerManager.drawText("\n\r\n\r\n\r\n\r", 0, heightC, "simsun", 24, false, false, 0);
+            }
+
+            heightC = 0;
+
+            ret = printerManager.printPage(0);
+        }
     }
 
     private PrinterManager getPrinterManager() {

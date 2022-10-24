@@ -43,33 +43,21 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               onPressed: () async {
-                GBPosPrint.qrArea("ismailunal.net");
+                String companyName = "GAZİBEL AŞ";
+                String userIDFormat = "00001";
+                String allDate = "01.01.2022 02:00:00";
+                String processIDFormat = "0001";
+                String cardNoFormat = "000001";
+                String balanceFormat = "125,65";
 
-                /*
-                GBPosPrint.startPrint(
-                    "GAZIBEL HIZ MUS INS SAN TIC A.S.\nGAZIBEL MARKET (GAZIMAR)");
-                GBPosPrint.spacePrint(3);
-                GBPosPrint.startPrint("TERMINAL NO: 00001");
-                GBPosPrint.spacePrint(2);
-                GBPosPrint.startPrint("10.05.2021 18:24:24");
-                GBPosPrint.spacePrint(5);
-                GBPosPrint.startPrint("-------- SATIS ISLEMI --------");
-                GBPosPrint.spacePrint(3);
-                GBPosPrint.startPrint("ISLEM NO: 00001");
-                GBPosPrint.spacePrint(1);
-                GBPosPrint.startPrint("KART NO: 1234 **** **** 1234");
-                GBPosPrint.spacePrint(4);
-                GBPosPrint.startPrint("RET KODU: C001");
-                GBPosPrint.spacePrint(2);
-                GBPosPrint.startPrint("BAKIYE YETERSIZ");
+                String printText =
+                    "GAZIBEL HIZ MUS INS SAN TIC A.S.\n${companyName}\n \nTERMINAL NO: ${userIDFormat}\n${allDate}\n \n------ BAKIYE SORGULAMA -------\n \nISLEM NO : ${processIDFormat}\nKART NO  : ${cardNoFormat}\nBAKIYE   : ${balanceFormat} TL\n \nBelge bilgi amacli verilmistir. \n \n";
 
-                GBPosPrint.spacePrint(6);
-                GBPosPrint.startPrint("Belge bilgi amacli verilmistir");
-                GBPosPrint.spacePrint(1);
-                GBPosPrint.endLogo();
-
-                GBPosPrint.spacePrint(18);
-                */
+                GBPosPrint.fullContent(
+                  content: printText,
+                  qrArea: "ismailunal.net",
+                  footerLogo: true,
+                );
               },
               color: Colors.green,
             ),

@@ -1,11 +1,15 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* TODO: Starting Project
 
 ## 0.0.2
 
-* bug fix
+* Bug fix
 
 ## 0.0.3
 
-* add qr
+* Add qr
+
+## 0.0.4
+
+* Full content print
