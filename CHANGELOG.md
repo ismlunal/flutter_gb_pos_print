@@ -13,3 +13,7 @@
 ## 0.0.4
 
 * Full content print
+
+## 0.0.5
+
+* Bug fix

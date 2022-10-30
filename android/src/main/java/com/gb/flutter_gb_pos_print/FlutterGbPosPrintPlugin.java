@@ -50,8 +50,10 @@ public class FlutterGbPosPrintPlugin implements FlutterPlugin, MethodCallHandler
       corec.doPrint(1, bitmap);
     } else if (call.method.equals("fullContent")) {
       String content = call.argument("content");
-      String qrArea = call.argument("qrArea");
       boolean footerLogo = call.argument("footerLogo");
+      String qrData = call.argument("qrData");
+      Integer qrWidth = (Integer)call.argument("qrWidth");
+      Integer qrAlignment = (Integer)call.argument("qrAlignment");
 
       Bitmap footerBitmap = null;
       if(footerLogo) // footer image logo
@@ -62,7 +64,7 @@ public class FlutterGbPosPrintPlugin implements FlutterPlugin, MethodCallHandler
         footerBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length, opts);
       }
 
-      corec.doPrintFull(content, qrArea, footerBitmap);
+      corec.doPrintFull(content, footerBitmap, qrData, qrWidth, qrAlignment);
     } else {
       result.notImplemented();
     }

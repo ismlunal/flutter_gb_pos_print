@@ -48,7 +48,7 @@ public class PrintManagerCore
         }
     }
 
-    public void doPrintFull(String content, String qrArea, Bitmap footerBitmap) {
+    public void doPrintFull(String content, Bitmap footerBitmap, String qrData, Integer qrWidth, Integer qrAlignment) {
         PrinterManager printerManager = this.getPrinterManager();
 
         int ret = printerManager.getStatus();  
@@ -61,9 +61,9 @@ public class PrintManagerCore
                 heightC += printerManager.drawText(text, 0, heightC, "simsun", 24, false, false, 0);
             }
 
-            if(qrArea != null)
+            if(qrData != null)
             {
-                heightC += printerManager.drawBarcode(qrArea, 110, heightC, /**/58, 7, 55, 0);
+                heightC += printerManager.drawBarcode(qrData, qrAlignment, heightC, /**/58, qrWidth, 55, 0);
                 if(footerBitmap == null)
                 {
                     heightC += printerManager.drawText("\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r", 0, heightC, "simsun", 24, false, false, 0);
@@ -78,7 +78,7 @@ public class PrintManagerCore
                 heightC += printerManager.drawText("\n\r\n\r\n\r\n\r\n\r\n\r\n\r", 0, heightC, "simsun", 24, false, false, 0);
             }
 
-            if(qrArea == null && footerBitmap == null)
+            if(qrData == null && footerBitmap == null)
             {
                 heightC += printerManager.drawText("\n\r\n\r\n\r\n\r", 0, heightC, "simsun", 24, false, false, 0);
             }

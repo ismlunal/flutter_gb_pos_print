@@ -43,19 +43,13 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
               onPressed: () async {
-                String companyName = "GAZİBEL AŞ";
-                String userIDFormat = "00001";
-                String allDate = "01.01.2022 02:00:00";
-                String processIDFormat = "0001";
-                String cardNoFormat = "000001";
-                String balanceFormat = "125,65";
-
                 String printText =
-                    "GAZIBEL HIZ MUS INS SAN TIC A.S.\n${companyName}\n \nTERMINAL NO: ${userIDFormat}\n${allDate}\n \n------ BAKIYE SORGULAMA -------\n \nISLEM NO : ${processIDFormat}\nKART NO  : ${cardNoFormat}\nBAKIYE   : ${balanceFormat} TL\n \nBelge bilgi amacli verilmistir. \n \n";
+                    "GAZIBEL HIZ MUS INS SAN TIC A.S.\nHAYDI\n\nTERMINAL NO: 000111\n24.10.2022 17:02:10\n\n-------- SATIS ISLEMI --------\n\nISLEM NO : 0069477\nONAY NO  : 0000360\nTUTAR    : 3,00 TL \n \r \n";
+                String? qrData = "ismailunal.net";
 
                 GBPosPrint.fullContent(
                   content: printText,
-                  qrArea: "ismailunal.net",
+                  qrData: qrData,
                   footerLogo: true,
                 );
               },

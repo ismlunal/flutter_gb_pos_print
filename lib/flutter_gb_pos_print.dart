@@ -27,13 +27,30 @@ class GBPosPrint {
 
   static Future<void> fullContent({
     required String content,
-    String? qrArea,
     bool footerLogo = false,
+    String? qrData,
+    int qrWidth = 0,
+    int qrAlignment = 110,
   }) async {
+    if (qrData != null && qrWidth == 0) {
+      if (qrData.length >= 300)
+        qrWidth = 2;
+      else if (qrData.length >= 140)
+        qrWidth = 3;
+      else if (qrData.length >= 50)
+        qrWidth = 4;
+      else if (qrData.length >= 20)
+        qrWidth = 5;
+      else
+        qrWidth = 6;
+    }
+
     await _channel.invokeMethod('fullContent', {
       "content": content,
-      "qrArea": qrArea,
       "footerLogo": footerLogo,
+      "qrData": qrData,
+      "qrWidth": qrWidth,
+      "qrAlignment": qrAlignment,
     });
   }
 }
