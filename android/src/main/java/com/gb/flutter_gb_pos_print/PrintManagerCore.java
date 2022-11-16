@@ -48,7 +48,7 @@ public class PrintManagerCore
         }
     }
 
-    public void doPrintFull(String content, Bitmap footerBitmap, String qrData, Integer qrWidth, Integer qrAlignment) {
+    public void doPrintFull(String content, Bitmap footerBitmap, String qrData, Integer qrWidth, Integer qrHeight, Integer qrAlignment) {
         PrinterManager printerManager = this.getPrinterManager();
 
         int ret = printerManager.getStatus();  
@@ -63,7 +63,12 @@ public class PrintManagerCore
 
             if(qrData != null)
             {
-                heightC += printerManager.drawBarcode(qrData, qrAlignment, heightC, /**/58, qrWidth, 55, 0);
+                int barcodeHeight = printerManager.drawBarcode(qrData, qrAlignment, heightC, /**/58, qrWidth, qrHeight, 0);
+                if(qrHeight > 0)
+                { heightC += qrHeight; }
+                else
+                { heightC += barcodeHeight; }
+
                 if(footerBitmap == null)
                 {
                     heightC += printerManager.drawText("\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r", 0, heightC, "simsun", 24, false, false, 0);

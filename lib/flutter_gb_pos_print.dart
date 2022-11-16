@@ -30,6 +30,7 @@ class GBPosPrint {
     bool footerLogo = false,
     String? qrData,
     int qrWidth = 0,
+    int qrHeight = 0,
     int qrAlignment = 110,
   }) async {
     if (qrData != null && qrWidth == 0) {
@@ -50,6 +51,7 @@ class GBPosPrint {
       "footerLogo": footerLogo,
       "qrData": qrData,
       "qrWidth": qrWidth,
+      "qrHeight": qrHeight,
       "qrAlignment": qrAlignment,
     });
   }

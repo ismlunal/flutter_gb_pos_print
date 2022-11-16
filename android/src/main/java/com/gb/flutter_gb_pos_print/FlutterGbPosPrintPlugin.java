@@ -53,6 +53,7 @@ public class FlutterGbPosPrintPlugin implements FlutterPlugin, MethodCallHandler
       boolean footerLogo = call.argument("footerLogo");
       String qrData = call.argument("qrData");
       Integer qrWidth = (Integer)call.argument("qrWidth");
+      Integer qrHeight = (Integer)call.argument("qrHeight"); 
       Integer qrAlignment = (Integer)call.argument("qrAlignment");
 
       Bitmap footerBitmap = null;
@@ -64,7 +65,7 @@ public class FlutterGbPosPrintPlugin implements FlutterPlugin, MethodCallHandler
         footerBitmap = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length, opts);
       }
 
-      corec.doPrintFull(content, footerBitmap, qrData, qrWidth, qrAlignment);
+      corec.doPrintFull(content, footerBitmap, qrData, qrWidth, qrHeight, qrAlignment);
     } else {
       result.notImplemented();
     }
