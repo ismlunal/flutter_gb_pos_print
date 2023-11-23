@@ -51,6 +51,7 @@ class _MyAppState extends State<MyApp> {
                   content: printText,
                   qrData: qrData,
                   footerLogo: true,
+                  footerCode: "GBB",
                 );
               },
               color: Colors.green,

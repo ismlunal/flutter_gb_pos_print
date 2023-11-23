@@ -28,6 +28,7 @@ class GBPosPrint {
   static Future<void> fullContent({
     required String content,
     bool footerLogo = false,
+    String? footerCode,
     String? qrData,
     int qrWidth = 0,
     int qrHeight = 0,
@@ -49,6 +50,7 @@ class GBPosPrint {
     await _channel.invokeMethod('fullContent', {
       "content": content,
       "footerLogo": footerLogo,
+      "footerCode": (footerCode ?? "GBB"),
       "qrData": qrData,
       "qrWidth": qrWidth,
       "qrHeight": qrHeight,
